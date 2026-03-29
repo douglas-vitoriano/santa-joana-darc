@@ -1,9 +1,10 @@
+# .github/workflows/deploy.yml
 name: Deploy · Santa Joana d'Arc
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:        # permite disparo manual
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -11,34 +12,28 @@ jobs:
     timeout-minutes: 15
 
     steps:
-      # ── Checkout ────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ── Ruby ────────────────────────────────────────
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
-          bundler-cache: true       # instala gems e faz cache automático
+          ruby-version: "3.2.8"
+          bundler-cache: true
 
-      # ── Node ────────────────────────────────────────
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Instalar dependências Node
-        run: npm ci
+        run: yarn install
 
-      # ── Build ────────────────────────────────────────
       - name: Build Bridgetown
         run: bundle exec bridgetown deploy
         env:
           BRIDGETOWN_ENV: production
 
-      # ── Deploy → Cloudflare Pages ────────────────────
       - name: Deploy para Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
