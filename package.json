@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "type": "module",
   "private": true,
-  "engines": {
-    "node": ">=18"
-  },
   "scripts": {
     "esbuild": "node esbuild.config.js --minify",
     "esbuild-dev": "node esbuild.config.js --watch"
@@ -19,5 +16,6 @@
     "postcss-load-config": "^5.1.0",
     "postcss-preset-env": "^9.6.0",
     "read-cache": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
