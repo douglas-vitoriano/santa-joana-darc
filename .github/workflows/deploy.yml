@@ -1,45 +1,45 @@
-# .github/workflows/deploy.yml
-name: Deploy · Santa Joana d'Arc
+name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
 
     steps:
-      - name: Checkout
+      - name: Checkout do código
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
+      - name: Configurar Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.2.8"
+          ruby-version: '3.2.8'
           bundler-cache: true
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
 
-      - name: Ativar Corepack (Yarn 4)
-        run: corepack enable
+      - name: Instalar dependências frontend
+        run: npm install
 
-      - name: Instalar dependências Node
-        run: yarn install
+      - name: Build frontend
+        run: bundle exec bridgetown frontend:build
 
-      - name: Build Bridgetown
-        run: bundle exec bridgetown deploy
-        env:
-          BRIDGETOWN_ENV: production
+      - name: Instalar dependências
+        run: bundle install
+
+      - name: Build do site Bridgetown
+        run: bundle exec bridgetown build
 
       - name: Deploy para Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy output --project-name=santa-joana-darc --branch=main
+          wranglerVersion: '4.74.0'
+          command: pages deploy output --project-name=mae-rainha
