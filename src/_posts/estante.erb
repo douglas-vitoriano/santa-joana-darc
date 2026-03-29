@@ -39,7 +39,6 @@ permalink: /estante/
       <% site.data.materiais.each do |item| %>
         <div class="column is-4 fade-in-up" data-categoria="<%= item["categoria"] %>">
           <div class="book-card">
-            <span class="book-icon"><%= item["emoji"] %></span>
             <div>
               <p class="book-title"><%= item["titulo"] %></p>
               <span class="tag is-medieval"><%= item["categoria"] %></span>
