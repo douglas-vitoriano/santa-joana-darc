@@ -26,6 +26,9 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Ativar Corepack (Yarn 4)
+        run: corepack enable
+
       - name: Instalar dependências Node
         run: yarn install
 
