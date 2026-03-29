@@ -1,16 +1,25 @@
-/* ── Imagem hero do grupo (ícone lettering) ── */
+/* ===================================================
+   SANTA D'ARC — Imagens
+   =================================================== */
+
+/* ── Logo do grupo (picture tag) ── */
 .grupo-logo {
   display: block;
   margin: 0 auto;
   max-width: 220px;
   opacity: 0.85;
-  filter: invert(1) sepia(1) saturate(3) hue-rotate(340deg) brightness(0.85);
-  /* Converte o lettering preto para dourado (#C9A84C) */
   transition: opacity 0.3s;
 }
 
 .grupo-logo:hover {
   opacity: 1;
+}
+
+/* ── Ícone de marca na navbar ── */
+.brand-icon-picture {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 /* ── Imagens nas tabs ── */
@@ -22,23 +31,19 @@
 }
 
 .tab-portrait--dark {
-  /* Imagem de fundo preto: adiciona bordas sutis e limita altura */
   max-height: 320px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.5);
   border: 1px solid rgba(201,168,76,0.2);
 }
 
 .tab-portrait--light {
-  /* Imagem de fundo branco: mascara as bordas com gradiente */
   max-height: 380px;
   box-shadow: 0 8px 40px rgba(201,168,76,0.2);
   -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
 }
 
-/* ── Hero portrait: versão transparente ── */
-/* santa_joana_darc_transparente tem fundo preto — funciona perfeitamente
-   no hero escuro sem máscara adicional */
+/* ── Hero portrait ── */
 .hero-portrait {
   display: block;
   max-height: 520px;
@@ -46,14 +51,12 @@
   max-width: 100%;
   position: relative;
   z-index: 1;
-  /* Fade suave na base para fundir com o hero */
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 95%);
   filter: drop-shadow(0 0 30px rgba(201,168,76,0.12));
 }
 
-/* ── Joana hero img (ícone da página) ── */
-/* santajoanadarc_transparente = 1024x1024, fundo preto/escuro */
+/* ── Joana hero img ── */
 .joana-hero-img {
   max-height: 220px;
   width: auto;
@@ -66,4 +69,5 @@
 
 @media (max-width: 768px) {
   .joana-hero-img { max-height: 150px; }
+  .hero-portrait   { max-height: 300px; }
 }

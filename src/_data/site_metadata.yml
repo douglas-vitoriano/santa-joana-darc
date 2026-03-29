@@ -5,3 +5,95 @@
 # in the templates via {{ site.metadata.myvariable }}.
 
 title: Grupo Santa Joana d'Arc
+description: "Encontros de Catequese sobre Mariologia e a vida de Santa Joana d'Arc"
+
+navbar:
+  aria_label: "navegação principal"
+  brand_alt: "Santa Joana d'Arc"
+  brand_name: "Santa Joana d'Arc"
+  brand_sub: "Grupo Catequético"
+  burger_label: "menu"
+  inicio: "Início"
+  joana: "Joana d'Arc"
+  estante: "Estante"
+
+pwa:
+  update_text: "Nova versão disponível"
+  update_btn: "Atualizar"
+  close_label: "Fechar"
+  icon_alt: "Santa d'Arc"
+  install_title: "Instalar Santa d'Arc"
+  install_sub: "Acesse offline · Como app nativo"
+  install_btn: "Instalar"
+  ios_hint: "📱 Para instalar: Safari → Compartilhar → Adicionar à Tela de Início"
+  installed_badge: "✓ App instalado"
+
+footer:
+  title_name: "Santa Joana d'Arc"
+  title_sub: "Grupo catequético"
+  description: "Encontros de Catequese sobre Cristo, Maria e a Igreja. Abertos a pessoas de todas as idades."
+  meetings_title: "Encontros"
+  meetings_topics: "Mariologia · Hagiografia · Espiritualidade · Fé · Coragem"
+  quote_title: "Citação"
+  quote_text: "Ajudai-me, ó Senhor, nesta tarefa que excede minhas forças."
+  quote_author: "— Santa Joana d'Arc"
+  credits: "Catequese com amor · ✝"
+
+pages:
+  home:
+    title: "Início"
+    hero_eyebrow: "Grupo Catequético"
+    hero_title_line1: "Santa Joana"
+    hero_title_line2: "d'Arc"
+    hero_subtitle_line1: "Encontros de fé, história e espiritualidade."
+    hero_subtitle_line2: "Abertos a pessoas de todas as idades."
+    btn_joana: "A Donzela de Orléans"
+    btn_estante: "Acessar a Estante"
+    quote_img_alt: "Santa Joana d'Arc"
+    section_sobre_title: "Sobre os Encontros"
+    section_sobre_sub: "Uma jornada de fé, história e espiritualidade"
+    section_temas_title: "Temas Abordados"
+    section_temas_sub: "Um roteiro espiritual completo"
+    cards:
+      - title: "✦ Cristocentrismo"
+        text: "O mistério de Cristo como o centro da vida espiritual, orientando toda a existência humana e a história em direção ao Verbo Encarnado."
+      - title: "✦ Mariologia"
+        text: "Estudo aprofundado da doutrina mariana: a vida, os dogmas e a devoção à Virgem Maria ao longo da história da Igreja."
+      - title: "✦ Hagiografia"
+        text: "A vida dos santos como espelhos de virtude, servindo de exemplo de coragem, fé e entrega total ao Reino de Deus."
+    quotes:
+      - text: "A voz de Deus sempre me dizia que eu devia vir à França; não poderia suportar por mais tempo. Uma das vozes me dizia: Parte, filha de Deus, parte!"
+        author: "— Santa Joana d'Arc · Processo de Condenação, 1431"
+      - text: "Em nome de Deus, os homens de armas combaterão e Deus dará a vitória."
+        author: "— Santa Joana d'Arc · Antes da batalha de Orléans"
+
+  estante:
+    title: "Estante"
+    hero_title: "Estante"
+    hero_sub: "Apostilas, livros e materiais para estudo e download"
+    filters:
+      - "Todos"
+      - "Doutrina"
+      - "Mariologia"
+      - "Teologia"
+      - "Apostilas"
+    btn_download: "Baixar"
+    btn_read: "Ler"
+    btn_soon: "Em breve"
+    howto_title: "Como Usar a Estante"
+    howto_steps:
+      - icon: "🔍"
+        title: "Filtre"
+        text: "Use os botões de categoria para encontrar o material que procura."
+      - icon: "⬇️"
+        title: "Baixe"
+        text: "Clique em \"Baixar\" para salvar o arquivo em seu dispositivo."
+      - icon: "📖"
+        title: "Leia"
+        text: "Clique em \"Ler\" para abrir o PDF diretamente no leitor integrado."
+
+  joana:
+    title: "Santa Joana d'Arc"
+
+  offline:
+    title: "Sem conexão"

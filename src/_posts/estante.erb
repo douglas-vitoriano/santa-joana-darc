@@ -1,28 +1,51 @@
 ---
 layout: default
 title: Estante
-description: Apostilas, livros e materiais para download
+description: Apostilas, livros e materiais para leitura e download
 permalink: /estante/
 ---
+<% estante = site.metadata.pages["estante"] %>
+<% filters  = estante["filters"] || ["Todos", "Doutrina", "Mariologia", "Teologia", "Apostilas"] %>
 
-<!-- ══ HERO ══ -->
+<div id="pdf-reader-modal"
+     class="pdf-reader-modal"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="pdf-reader-title"
+     style="display:none;">
+  <div class="pdf-reader-bar">
+    <span id="pdf-reader-title" class="pdf-reader-title"></span>
+    <div class="pdf-reader-actions">
+      <a id="pdf-reader-download" href="#" download class="button is-gold is-small">Baixar</a>
+      <button class="pdf-reader-close" onclick="window.closePdfReader()">✕ Fechar</button>
+    </div>
+  </div>
+  <iframe id="pdf-reader-frame" class="pdf-reader-frame" src="" title="Leitor de PDF"></iframe>
+  <div id="pdf-reader-fallback" class="pdf-reader-fallback" style="display:none;">
+    <p class="pdf-reader-fallback-icon">📄</p>
+    <p class="pdf-reader-fallback-title">Seu dispositivo não exibiu o PDF inline.</p>
+    <p class="pdf-reader-fallback-desc">Use o botão abaixo para abrir ou baixar o documento.</p>
+    <div class="pdf-reader-fallback-actions">
+      <a id="pdf-fallback-open" href="#" target="_blank" rel="noopener" class="button is-gold">Abrir PDF</a>
+      <a id="pdf-fallback-download" href="#" download class="button is-burgundy">Baixar</a>
+    </div>
+  </div>
+</div>
+
 <section class="hero hero-santa is-small">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title is-2">Estante</h1>
+      <h1 class="title is-2"><%= estante["hero_title"] %></h1>
       <hr class="hero-divider" />
-      <p class="subtitle is-6" style="color:rgba(248,243,232,0.75); font-style:italic;">
-        Apostilas, livros e materiais para download
-      </p>
+      <p class="hero-subtitle"><%= estante["hero_sub"] %></p>
     </div>
   </div>
 </section>
 
-<!-- ══ FILTROS ══ -->
-<section class="section section-smoke" style="padding: 1.5rem 1.5rem 0;">
+<section class="section section-smoke section--filters">
   <div class="container">
     <div class="buttons is-centered">
-      <% ["Todos", "Doutrina", "Mariologia", "Teologia", "Apostilas"].each_with_index do |cat, i| %>
+      <% filters.each_with_index do |cat, i| %>
         <button class="button <%= i == 0 ? "is-burgundy" : "is-outline-gold" %>"
                 data-filter="<%= cat %>">
           <%= cat %>
@@ -32,7 +55,6 @@ permalink: /estante/
   </div>
 </section>
 
-<!-- ══ GRID ══ -->
 <section class="section section-smoke">
   <div class="container">
     <div class="columns is-multiline">
@@ -45,11 +67,27 @@ permalink: /estante/
             </div>
             <p class="book-description"><%= item["descricao"].html_safe %></p>
             <p class="book-meta"><%= item["detalhes"] %></p>
-            <div class="buttons">
+            <div class="buttons" style="margin-top:auto; flex-wrap:wrap; gap:0.35rem;">
               <% if item["url"] && !item["url"].empty? %>
-                <a href="<%= item["url"] %>" download class="button is-gold is-small">Baixar</a>
+                <a href="<%= item["url"] %>" download
+                   class="button is-gold is-small"
+                   title="Baixar <%= item["titulo"] %>">
+                  <%= estante["btn_download"] %>
+                </a>
+                <button class="button is-burgundy is-small js-pdf-open"
+                        data-pdf-url="<%= item["url"] %>"
+                        data-pdf-title="<%= item["titulo"] %>"
+                        title="Ler <%= item["titulo"] %> no leitor">
+                  <%= estante["btn_read"] %>
+                </button>
+                <% if item["calibre_url"] && !item["calibre_url"].empty? %>
+                  <a href="<%= item["calibre_url"] %>" target="_blank" rel="noopener"
+                     class="button is-outline-gold is-small">
+                    📚 Calibre
+                  </a>
+                <% end %>
               <% else %>
-                <button class="button is-gold is-small" disabled title="Em breve">Em breve</button>
+                <button class="button is-gold is-small" disabled><%= estante["btn_soon"] %></button>
               <% end %>
             </div>
           </div>
@@ -59,10 +97,9 @@ permalink: /estante/
   </div>
 </section>
 
-<!-- ══ COMO USAR ══ -->
 <section class="section section-cream">
   <div class="container">
-    <h2 class="section-title">Como Usar a Estante</h2>
+    <h2 class="section-title"><%= estante["howto_title"] %></h2>
     <div class="ornament">
       <span class="ornament-line"></span>
       <span class="ornament-cross">✦</span>
@@ -71,21 +108,13 @@ permalink: /estante/
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="columns is-multiline">
-          <div class="column is-4 has-text-centered">
-            <p style="font-size:2.5rem;">🔍</p>
-            <p class="book-title" style="text-align:center;">Filtre</p>
-            <p>Use os botões de categoria para encontrar o material que procura.</p>
-          </div>
-          <div class="column is-4 has-text-centered">
-            <p style="font-size:2.5rem;">⬇️</p>
-            <p class="book-title" style="text-align:center;">Baixe</p>
-            <p>Clique em "Baixar" para salvar o arquivo em seu dispositivo.</p>
-          </div>
-          <div class="column is-4 has-text-centered">
-            <p style="font-size:2.5rem;">🙏</p>
-            <p class="book-title" style="text-align:center;">Reflita</p>
-            <p>Use os materiais nos encontros, na oração pessoal e no estudo em família.</p>
-          </div>
+          <% (estante["howto_steps"] || []).each do |step| %>
+            <div class="column is-4 has-text-centered">
+              <p class="howto-icon"><%= step["icon"] %></p>
+              <p class="book-title book-title--center"><%= step["title"] %></p>
+              <p><%= step["text"] %></p>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

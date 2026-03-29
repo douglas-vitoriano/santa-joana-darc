@@ -1,45 +1,45 @@
+<% metadata = site.metadata %>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <% resource_title = strip_html(strip_newlines(title)) %>
-<title><% if resource_title != "Index" %><%= resource_title %> | <%= metadata.title %><% else %><%= metadata.title %><% end %></title>
+<title><%= resource_title != "Index" ? "#{resource_title} | #{metadata.title}" : metadata.title %></title>
 
-<meta name="description" content="<%= metadata.description || "Encontros de Catequese sobre Mariologia e a vida de Santa Joana d'Arc" %>" />
+<meta name="description" content="<%= metadata.description %>" />
 
-<!-- ══ PWA ══ -->
+<% pwa = metadata.pwa %>
 <link rel="manifest" href="/manifest.json" />
 <meta name="theme-color" content="#7A2D3E" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="Santa d'Arc" />
-<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
-<meta name="msapplication-TileColor" content="#7A2D3E" />
-<meta name="msapplication-TileImage" content="/images/icons/icon-144x144.png" />
+<meta name="apple-mobile-web-app-title" content="<%= metadata.title %>" />
 
-<!-- ══ SEO / Open Graph ══ -->
+<link rel="apple-touch-icon"
+      href="/images/icons/apple-touch-icon_black.png"
+      data-icon-light="/images/icons/apple-touch-icon_black.png"
+      data-icon-dark="/images/icons/apple-touch-icon_white.png" />
+
+<link rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/icons/favicon-32x32_black.png"
+      data-icon-light="/images/icons/favicon-32x32_black.png"
+      data-icon-dark="/images/icons/favicon-32x32_white.png" />
+
+<meta name="msapplication-TileColor" content="#7A2D3E" />
+<meta name="msapplication-TileImage" content="/images/icons/icon_black-144x144.png" />
+
 <meta property="og:site_name" content="<%= metadata.title %>" />
 <meta property="og:title" content="<%= resource_title != "Index" ? resource_title : metadata.title %>" />
-<meta property="og:description" content="<%= metadata.description || "Encontros de Catequese sobre Mariologia e a vida de Santa Joana d'Arc" %>" />
+<meta property="og:description" content="<%= metadata.description %>" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="/images/icone_white.png" />
+<meta property="og:image" content="/images/icons/icon_white-512x512.png" />
 
-<!-- ══ Favicon ══ -->
-<link rel="icon" href="/images/icons/icon-192x192.png" />
-<link rel="icon" href="/images/icons/icon-192x192.png" />
-
-<!-- ══ CSS da App (esbuild) ══ -->
 <link rel="stylesheet" href="<%= asset_path :css %>" />
-
-<!-- ══ Bulma ══ -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
-
-<!-- ══ Google Fonts ══ -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
-
-<!-- ══ Font Awesome ══ -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<!-- ══ JS da App (esbuild) ══ -->
 <script src="<%= asset_path :js %>" defer></script>
 <%= live_reload_dev_js %>

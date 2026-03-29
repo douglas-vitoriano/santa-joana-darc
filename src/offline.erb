@@ -4,60 +4,110 @@ title: Sem conexão
 permalink: /offline/
 ---
 
-<section class="hero hero-santa is-medium">
+<section class="hero hero-santa is-small">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <p style="font-size:4rem; margin-bottom:1rem;">📵</p>
+      <p style="font-size:3rem; margin-bottom:0.75rem;">📵</p>
       <h1 class="title is-2">Sem conexão</h1>
       <hr class="hero-divider" />
-      <p class="subtitle is-5" style="color:rgba(248,243,232,0.8);">
-        Esta página não está disponível offline.
+      <p class="subtitle is-5" style="color:rgba(248,243,232,0.80);">
+        Você está offline. Veja abaixo o que está disponível.
       </p>
     </div>
   </div>
 </section>
 
-<section class="section section-cream">
+<section class="section section-smoke">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-8 has-text-centered">
+      <div class="column is-10">
 
+        <%# Card de status PWA %>
+        <div class="card-medieval pwa-status-card mb-5">
+          <div class="pwa-status-body">
+            <span id="pwa-status-icon" class="pwa-status-icon">⏳</span>
+            <div class="pwa-status-text">
+              <p class="book-title pwa-status-title" id="pwa-status-title">Verificando instalação…</p>
+              <p class="book-description pwa-status-desc" id="pwa-status-desc">Aguarde um momento.</p>
+            </div>
+            <div id="pwa-status-action" class="pwa-status-action"></div>
+          </div>
+        </div>
+
+        <%# Guia de instalação (oculto por padrão, JS exibe se necessário) %>
+        <div id="pwa-install-guide" class="pwa-install-guide mb-5" style="display:none;">
+          <div class="card-medieval pwa-install-guide-card">
+            <p class="book-title mb-4">📲 Como instalar o app no seu celular:</p>
+            <div class="columns is-multiline">
+              <div class="column is-6">
+                <div class="pwa-install-platform">
+                  <p class="pwa-install-platform-icon">🤖</p>
+                  <p class="book-title pwa-install-platform-name">Android · Chrome</p>
+                  <ol>
+                    <li>Abra o site no Chrome</li>
+                    <li>Toque no menu <strong>⋮</strong> (3 pontos)</li>
+                    <li>Selecione <strong>"Adicionar à tela inicial"</strong></li>
+                    <li>Confirme a instalação</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="column is-6">
+                <div class="pwa-install-platform">
+                  <p class="pwa-install-platform-icon">🍎</p>
+                  <p class="book-title pwa-install-platform-name">iPhone · Safari</p>
+                  <ol>
+                    <li>Abra o site no Safari</li>
+                    <li>Toque em <strong>Compartilhar</strong> □↑</li>
+                    <li>Role e toque em <strong>"Adicionar à Tela de Início"</strong></li>
+                    <li>Confirme tocando em <strong>"Adicionar"</strong></li>
+                  </ol>
+                </div>
+              </div>
+              <div class="column is-12">
+                <p class="pwa-install-note">
+                  ✦ Após instalar, o app funciona completamente offline —
+                  páginas, textos e materiais cacheados ficam disponíveis sem internet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%# Citação %>
         <div class="quote-medieval mb-5">
           A fé não depende de sinal de internet. Continue em oração.
           <span class="quote-author">— Santa d'Arc · Lembrança offline</span>
         </div>
 
-        <p class="section-subtitle mb-5">
-          Estas páginas estão disponíveis offline:
+        <%# Páginas disponíveis offline %>
+        <p class="section-subtitle mb-4" style="text-align:left;">
+          Páginas disponíveis offline:
         </p>
 
         <div class="columns is-multiline">
           <div class="column is-4">
-            <a href="/" class="book-card" style="text-decoration:none; display:block;">
-              <span class="book-icon">🏠</span>
-              <p class="book-title">Início</p>
+            <a href="/" class="book-card" style="text-decoration:none;">
+              <p class="book-title">🏠 Início</p>
               <p class="book-description">Página principal do Santa d'Arc</p>
             </a>
           </div>
           <div class="column is-4">
-            <a href="/joana-darc/" class="book-card" style="text-decoration:none; display:block;">
-              <span class="book-icon">⚔️</span>
-              <p class="book-title">Joana d'Arc</p>
+            <a href="/joana-darc/" class="book-card" style="text-decoration:none;">
+              <p class="book-title">⚔️ Joana d'Arc</p>
               <p class="book-description">História completa da Donzela de Orléans</p>
             </a>
           </div>
           <div class="column is-4">
-            <a href="/estante/" class="book-card" style="text-decoration:none; display:block;">
-              <span class="book-icon">📚</span>
-              <p class="book-title">Estante</p>
+            <a href="/estante/" class="book-card" style="text-decoration:none;">
+              <p class="book-title">📚 Estante</p>
               <p class="book-description">Materiais de catequese</p>
             </a>
           </div>
         </div>
 
-        <div class="mt-5">
+        <div class="has-text-centered mt-5 mb-6">
           <button onclick="window.location.reload()" class="button is-gold">
-            🔄 Tentar novamente
+            🔄 Tentar reconectar
           </button>
         </div>
 

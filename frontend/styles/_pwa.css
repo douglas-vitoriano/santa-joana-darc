@@ -1,0 +1,173 @@
+/* ===================================================
+   SANTA D'ARC — PWA UI (banners, hints, badges)
+   =================================================== */
+
+/* ── Banner: atualização disponível ── */
+.pwa-update-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--color-primary);
+  color: var(--color-cream);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  text-align: center;
+  z-index: 9998;
+  font-size: 0.85rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--color-secondary);
+}
+
+.pwa-update-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Banner: instalar (Android/Chrome) ── */
+.pwa-install-banner {
+  position: fixed;
+  bottom: 1rem; left: 1rem; right: 1rem;
+  background: linear-gradient(135deg, var(--color-dark), #3D1020);
+  color: var(--color-cream);
+  border: 2px solid var(--color-secondary);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pwa-install-icon-wrap {
+  flex-shrink: 0;
+}
+
+.pwa-install-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: block;
+}
+
+.pwa-install-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pwa-install-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  letter-spacing: 0.05em;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pwa-install-sub {
+  font-size: 0.80rem;
+  opacity: 0.80;
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+.pwa-install-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ── Botões PWA ── */
+.pwa-btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.pwa-btn--install {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-light-gold));
+  color: var(--color-dark);
+  padding: 0.5rem 1.1rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.pwa-btn--install:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201,168,76,0.4);
+}
+
+.pwa-btn--confirm {
+  background: var(--color-secondary);
+  color: var(--color-dark);
+  padding: 0.3rem 0.9rem;
+  font-size: 0.78rem;
+}
+
+.pwa-btn--close {
+  background: transparent;
+  color: var(--color-cream);
+  border: none;
+  padding: 0.5rem 0.6rem;
+  font-size: 1rem;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.pwa-btn--dismiss {
+  background: transparent;
+  color: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* ── Hint iOS ── */
+.ios-install-hint {
+  padding: 0.55rem 1rem;
+  background: var(--color-dark);
+  color: var(--color-light-gold);
+  text-align: center;
+  font-size: 0.82rem;
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Badge: já instalado ── */
+.pwa-installed-badge {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, var(--color-dark), #3D1020);
+  color: var(--color-secondary);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.72rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 9990;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  pointer-events: none;
+  animation: fadeInUp 0.5s ease both;
+}
