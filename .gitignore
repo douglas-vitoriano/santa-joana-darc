@@ -40,3 +40,6 @@ yarn-debug.log*
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+node_modules/
+.pnp.cjs
+.pnp.loader.mjs
