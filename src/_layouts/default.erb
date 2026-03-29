@@ -9,22 +9,35 @@
   </head>
   <body class="<%= data.layout %> <%= data.page_class %>">
 
-    <div id="pwa-update-banner" class="notification is-warning is-hidden" style="position:fixed;top:0;left:0;right:0;z-index:9999;border-radius:0;margin:0;">
-      <button class="delete"></button>
+    <%# Banner: atualização disponível %>
+    <div id="pwa-update-banner"
+         class="pwa-update-banner is-hidden"
+         role="alert"
+         aria-live="polite"
+         aria-label="Atualização disponível">
       <span class="pwa-update-text"><%= pwa["update_text"] %></span>
-      <button class="pwa-btn pwa-btn--confirm" onclick="window.updateSW()">
-        <%= pwa["update_btn"] %>
-      </button>
+      <div class="pwa-update-actions">
+        <button class="pwa-btn pwa-btn--confirm" onclick="window.updateSW()">
+          <%= pwa["update_btn"] %>
+        </button>
+        <button class="delete is-small"
+                aria-label="<%= pwa["close_label"] %>">
+        </button>
+      </div>
     </div>
 
-    <div id="pwa-install-banner" class="notification is-hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;border-radius:0;margin:0;">
-      <button class="delete"></button>
+    <%# Banner: instalar app (Android/Chrome) %>
+    <div id="pwa-install-banner"
+         class="pwa-install-banner is-hidden"
+         role="complementary"
+         aria-label="Instalar aplicativo">
       <picture class="pwa-install-icon-wrap">
         <source srcset="/images/icons/icon_white-72x72.png" media="(prefers-color-scheme: dark)" />
         <img src="/images/icons/icon_black-72x72.png"
-            alt="<%= metadata.title %>"
-            class="pwa-install-icon"
-            width="48" height="48" />
+             alt=""
+             class="pwa-install-icon"
+             width="40" height="40"
+             aria-hidden="true" />
       </picture>
       <div class="pwa-install-text">
         <p class="pwa-install-title"><%= "Instalar #{metadata.title}" %></p>
@@ -34,16 +47,29 @@
         <button id="pwa-install-btn" class="pwa-btn pwa-btn--install">
           <%= pwa["install_btn"] %>
         </button>
+        <button class="delete is-small"
+                aria-label="<%= pwa["close_label"] %>">
+        </button>
       </div>
     </div>
 
-    <div id="ios-install-hint" class="notification is-hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;border-radius:0;margin:0;">
-      <button class="delete"></button>
+    <%# Hint iOS %>
+    <div id="ios-install-hint"
+         class="ios-install-hint is-hidden"
+         role="status"
+         aria-live="polite">
       <span><%= pwa["ios_hint"] %></span>
+      <button class="delete is-small"
+              aria-label="<%= pwa["close_label"] %>">
+      </button>
     </div>
 
-    <div id="pwa-installed-badge" class="notification is-success is-hidden" style="position:fixed;bottom:1rem;right:1rem;z-index:9999;width:auto;">
-      <span><%= pwa["installed_badge"] %></span>
+    <%# Badge: app instalado (some sozinho) %>
+    <div id="pwa-installed-badge"
+         class="pwa-installed-badge is-hidden"
+         role="status"
+         aria-live="polite">
+      <span>✓ <%= pwa["installed_badge"] %></span>
     </div>
 
     <%= render Shared::Navbar.new(metadata: metadata, resource: resource) %>

@@ -79,8 +79,10 @@ window.addEventListener('appinstalled', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
   // Bulma: .delete dentro de .notification fecha o pai
-  document.querySelectorAll('.notification .delete').forEach(btn => {
-    const banner = btn.closest('.notification')
+  document.querySelectorAll(
+    '#pwa-update-banner .delete, #pwa-install-banner .delete, #ios-install-hint .delete'
+  ).forEach(btn => {
+    const banner = btn.closest('[id]')
     btn.addEventListener('click', () => {
       banner.classList.add('is-hidden')
       if (banner.id) localStorage.setItem(`${banner.id}-dismissed`, '1')
