@@ -1,0 +1,94 @@
+---
+layout: default
+title: Estante
+description: Apostilas, livros e materiais para download
+permalink: /estante/
+---
+
+<!-- ══ HERO ══ -->
+<section class="hero hero-santa is-small">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-2">Estante</h1>
+      <hr class="hero-divider" />
+      <p class="subtitle is-6" style="color:rgba(248,243,232,0.75); font-style:italic;">
+        Apostilas, livros e materiais para download
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FILTROS ══ -->
+<section class="section section-smoke" style="padding: 1.5rem 1.5rem 0;">
+  <div class="container">
+    <div class="buttons is-centered">
+      <% ["Todos", "Doutrina", "Mariologia", "Hagiografia", "Apostilas"].each_with_index do |cat, i| %>
+        <button class="button <%= i == 0 ? "is-burgundy" : "is-outline-gold" %>"
+                data-filter="<%= cat %>">
+          <%= cat %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GRID ══ -->
+<section class="section section-smoke">
+  <div class="container">
+    <div class="columns is-multiline">
+      <% site.data.materiais.each do |item| %>
+        <div class="column is-4 fade-in-up" data-categoria="<%= item["categoria"] %>">
+          <div class="book-card">
+            <span class="book-icon"><%= item["emoji"] %></span>
+            <div>
+              <p class="book-title"><%= item["titulo"] %></p>
+              <span class="tag is-medieval"><%= item["categoria"] %></span>
+            </div>
+            <p class="book-description"><%= item["descricao"].html_safe %></p>
+            <p class="book-meta"><%= item["detalhes"] %></p>
+            <div class="buttons">
+              <% if item["url"] && !item["url"].empty? %>
+                <a href="<%= item["url"] %>" download class="button is-gold is-small">Baixar</a>
+              <% else %>
+                <button class="button is-gold is-small" disabled title="Em breve">Em breve</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMO USAR ══ -->
+<section class="section section-cream">
+  <div class="container">
+    <h2 class="section-title">Como Usar a Estante</h2>
+    <div class="ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-cross">✦</span>
+      <span class="ornament-line right"></span>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="columns is-multiline">
+          <div class="column is-4 has-text-centered">
+            <p style="font-size:2.5rem;">🔍</p>
+            <p class="book-title" style="text-align:center;">Filtre</p>
+            <p>Use os botões de categoria para encontrar o material que procura.</p>
+          </div>
+          <div class="column is-4 has-text-centered">
+            <p style="font-size:2.5rem;">⬇️</p>
+            <p class="book-title" style="text-align:center;">Baixe</p>
+            <p>Clique em "Baixar" para salvar o arquivo em seu dispositivo.</p>
+          </div>
+          <div class="column is-4 has-text-centered">
+            <p style="font-size:2.5rem;">🙏</p>
+            <p class="book-title" style="text-align:center;">Reflita</p>
+            <p>Use os materiais nos encontros, na oração pessoal e no estudo em família.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

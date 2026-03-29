@@ -1,0 +1,281 @@
+/* ===================================================
+   SANTA D'ARC — Páginas de Erro (404 / 500)
+   =================================================== */
+
+/* ── Layout base ── */
+.error-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Padrão de fundo (cruz medieval) ── */
+.error-page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ── Número fantasma (marca d'água) ── */
+.error-code-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(10rem, 25vw, 22rem);
+  font-weight: 900;
+  color: transparent;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Conteúdo central ── */
+.error-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 580px;
+}
+
+.error-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.error-latin {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.error-number {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.error-divider {
+  width: 60px;
+  height: 2px;
+  border: none;
+  margin: 1.25rem auto;
+}
+
+.error-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: var(--color-cream);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 1.1rem;
+  color: rgba(248,243,232,0.70);
+  font-style: italic;
+  line-height: 1.75;
+  margin-bottom: 0.5rem;
+}
+
+.error-sub {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 0.92rem;
+  color: rgba(248,243,232,0.40);
+  margin-bottom: 2.25rem;
+}
+
+/* ── Botões ── */
+.error-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-error-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: linear-gradient(135deg, var(--color-secondary), #F0D98C);
+  color: var(--color-dark);
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+}
+
+.btn-error-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.5);
+  color: var(--color-dark);
+}
+
+.btn-error-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.72rem 1.5rem;
+  border-radius: 6px;
+  border-width: 2px;
+  border-style: solid;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Citação ── */
+.error-quote {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+}
+
+.error-quote p {
+  font-family: 'Crimson Text', Georgia, serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.error-quote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+/* ══════════════════════════════════════════
+   404 — Tema dourado
+   ══════════════════════════════════════════ */
+.error-page--404 {
+  background: linear-gradient(160deg, var(--color-dark) 0%, #3D1020 50%, var(--color-primary) 100%);
+}
+
+.error-page--404 .error-code-wrap {
+  -webkit-text-stroke: 1px rgba(201,168,76,0.08);
+}
+
+.error-page--404 .error-latin    { color: var(--color-secondary); }
+.error-page--404 .error-number   { color: var(--color-secondary); text-shadow: 0 0 60px rgba(201,168,76,0.3); }
+.error-page--404 .error-divider  { background: linear-gradient(90deg, transparent, var(--color-secondary), transparent); }
+.error-page--404 .error-quote    { border-top: 1px solid rgba(201,168,76,0.15); }
+.error-page--404 .error-quote p  { color: rgba(240,217,140,0.5); }
+.error-page--404 .error-quote cite { color: rgba(201,168,76,0.35); }
+
+.error-page--404 .btn-error-outline {
+  color: var(--color-secondary);
+  border-color: rgba(201,168,76,0.5);
+}
+.error-page--404 .btn-error-outline:hover {
+  border-color: var(--color-secondary);
+  background: rgba(201,168,76,0.08);
+  color: var(--color-secondary);
+}
+
+/* Animação: pomba flutuando */
+.error-page--404 .error-icon {
+  animation: error-float 3s ease-in-out infinite;
+}
+
+@keyframes error-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ══════════════════════════════════════════
+   500 — Tema brasa / fogo
+   ══════════════════════════════════════════ */
+.error-page--500 {
+  background: linear-gradient(160deg, #0D0806 0%, #2A0E0E 50%, #4A1010 100%);
+}
+
+/* Reflexo de chamas na base */
+.error-page--500::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to top, rgba(180,40,10,0.18), transparent);
+  pointer-events: none;
+  animation: error-flicker 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes error-flicker {
+  0%   { opacity: 0.6; transform: scaleY(1); }
+  100% { opacity: 1;   transform: scaleY(1.04); }
+}
+
+.error-page--500 .error-code-wrap {
+  -webkit-text-stroke: 1px rgba(180,40,10,0.10);
+}
+
+.error-page--500 .error-latin    { color: #E8704A; }
+.error-page--500 .error-number   { color: #E8704A; text-shadow: 0 0 60px rgba(220,80,20,0.45); }
+.error-page--500 .error-divider  { background: linear-gradient(90deg, transparent, #E8704A, transparent); }
+.error-page--500 .error-quote    { border-top: 1px solid rgba(232,112,74,0.12); }
+.error-page--500 .error-quote p  { color: rgba(240,200,140,0.45); }
+.error-page--500 .error-quote cite { color: rgba(232,112,74,0.30); }
+
+.error-page--500 .btn-error-outline {
+  color: rgba(232,112,74,0.85);
+  border-color: rgba(232,112,74,0.35);
+}
+.error-page--500 .btn-error-outline:hover {
+  border-color: rgba(232,112,74,0.7);
+  background: rgba(232,112,74,0.08);
+  color: #E8704A;
+}
+
+/* Animação: chama pulsante */
+.error-page--500 .error-icon {
+  animation: error-burn 1.8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 16px rgba(255,100,0,0.5));
+}
+
+@keyframes error-burn {
+  0%   { transform: scale(1) rotate(-1deg);    filter: drop-shadow(0 0 8px  rgba(255,100,0,0.4)); }
+  100% { transform: scale(1.06) rotate(1deg);  filter: drop-shadow(0 0 24px rgba(255,60,0,0.7)); }
+}
+
+/* ── Responsivo ── */
+@media (max-width: 768px) {
+  .error-page { min-height: 60vh; padding: 2rem 1rem; }
+  .error-actions { flex-direction: column; align-items: center; }
+  .btn-error-primary,
+  .btn-error-outline { width: 100%; justify-content: center; }
+}

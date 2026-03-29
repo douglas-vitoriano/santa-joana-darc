@@ -1,0 +1,123 @@
+---
+layout: default
+title: Início
+---
+
+<!-- ══ HERO ══ -->
+<section class="hero hero-santa is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+
+        <!-- Texto -->
+        <div class="column is-6 fade-in-up">
+          <p class="hero-eyebrow">Grupo Catequético</p>
+          <h1 class="title is-1 hero-title">Santa Joana<br/>d'Arc</h1>
+          <hr class="hero-divider" style="margin:1.25rem 0;" />
+          <p class="hero-subtitle">
+            Encontros de fé, história e espiritualidade.<br/>
+            Abertos a pessoas de todas as idades.
+          </p>
+          <div class="buttons mt-5">
+            <a href="/joana-darc/" class="button is-gold">A Donzela de Orléans</a>
+            <a href="/estante/" class="button is-outline-gold">Acessar a Estante</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOBRE OS ENCONTROS ══ -->
+<section class="section section-cream">
+  <div class="container">
+    <h2 class="section-title">Sobre os Encontros</h2>
+    <p class="section-subtitle">Uma jornada de fé, história e espiritualidade</p>
+    <div class="ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-cross">✦</span>
+      <span class="ornament-line right"></span>
+    </div>
+    <div class="columns is-multiline">
+      <div class="column is-4 fade-in-up delay-1">
+        <div class="card-medieval">
+          <div class="card-header">
+            <p class="card-header-title">✦ Cristocentrismo</p>
+          </div>
+          <div class="card-content">
+            <p>O mistério de Cristo como o centro da vida espiritual, orientando toda a existência humana e a história em direção ao Verbo Encarnado.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-4 fade-in-up delay-2">
+        <div class="card-medieval">
+          <div class="card-header">
+            <p class="card-header-title">✦ Mariologia</p>
+          </div>
+          <div class="card-content">
+            <p>Estudo aprofundado da doutrina mariana: a vida, os dogmas e a devoção à Virgem Maria ao longo da história da Igreja.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column is-4 fade-in-up delay-3">
+        <div class="card-medieval">
+          <div class="card-header">
+            <p class="card-header-title">✦ Hagiografia</p>
+          </div>
+          <div class="card-content">
+            <p>A vida dos santos como espelhos de virtude, servindo de exemplo de coragem, fé e entrega total ao Reino de Deus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CITAÇÃO com imagem lateral ══ -->
+<section class="section section-smoke">
+  <div class="container">
+    <div class="columns is-vcentered">
+      <div class="column is-4 has-text-centered is-hidden-mobile">
+        <%# santa_joana_darc_white tem fundo branco — funciona bem na seção smoke (cinza claro) %>
+        <img src="/images/santa_joana_darc_transparente.png"
+             alt="Santa Joana d'Arc"
+             class="quote-portrait"
+             width="320" height="406"
+             loading="lazy" />
+      </div>
+      <div class="column is-8">
+        <div class="quote-medieval">
+          A voz de Deus sempre me dizia que eu devia vir à França; não poderia suportar por mais tempo. Uma das vozes me dizia: "Parte, filha de Deus, parte!"
+          <span class="quote-author">— Santa Joana d'Arc · Processo de Condenação, 1431</span>
+        </div>
+        <div class="quote-medieval mt-4">
+          Em nome de Deus, os homens de armas combaterão e Deus dará a vitória.
+          <span class="quote-author">— Santa Joana d'Arc · Antes da batalha de Orléans</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEMAS ══ -->
+<section class="section section-cream" style="padding-top:1rem;">
+  <div class="container">
+    <h2 class="section-title">Temas Abordados</h2>
+    <p class="section-subtitle">Um roteiro espiritual completo</p>
+    <div class="ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-cross">✦</span>
+      <span class="ornament-line right"></span>
+    </div>
+    <div class="columns is-multiline">
+      <% site.data.temas.each do |tema| %>
+        <div class="column is-6">
+          <div class="book-card">
+            <p class="book-title"><%= tema["titulo"] %></p>
+            <p class="book-description"><%= tema["descricao"] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

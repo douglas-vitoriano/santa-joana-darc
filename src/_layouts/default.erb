@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <%= render "head", metadata: site.metadata, title: data.title %>
+  </head>
+  <body class="<%= data.layout %> <%= data.page_class %>">
+
+    <!-- ══ Banner: offline ══ -->
+    <!-- Inserido via JS em index.js quando navigator.onLine == false -->
+
+    <!-- ══ Banner: atualização disponível ══ -->
+    <div id="pwa-update-banner" style="display:none; position:fixed; top:0; left:0; right:0;
+         background:#7A2D3E; color:#F8F3E8; padding:0.6rem 1rem;
+         text-align:center; z-index:9998; font-size:0.85rem;
+         font-family:'Cinzel',serif; letter-spacing:0.05em; border-bottom:2px solid #C9A84C;">
+      🔄 Nova versão disponível!
+      <button onclick="window.updateSW()"
+              style="background:#C9A84C; color:#1A1208; border:none; padding:0.3rem 0.9rem;
+                     border-radius:4px; cursor:pointer; margin-left:0.75rem;
+                     font-weight:700; font-size:0.78rem; letter-spacing:0.08em;">
+        Atualizar
+      </button>
+      <button onclick="document.getElementById('pwa-update-banner').style.display='none'"
+              style="background:transparent; color:#F8F3E8; border:none; cursor:pointer;
+                     margin-left:0.5rem; font-size:1rem; opacity:0.7;">✕</button>
+    </div>
+
+    <!-- ══ Banner: instalar PWA ══ -->
+    <div id="pwa-install-banner" style="display:none; position:fixed; bottom:1rem; left:1rem; right:1rem;
+         background:linear-gradient(135deg,#1A1208,#3D1020); color:#F8F3E8;
+         border:2px solid #C9A84C; border-radius:8px; padding:1rem 1.25rem;
+         box-shadow:0 8px 32px rgba(0,0,0,0.6); z-index:9999;
+         align-items:center; gap:1rem; flex-wrap:wrap;">
+      <img src="/images/icons/icon-72x72.png" alt="Santa d'Arc"
+           style="width:48px; height:48px; border-radius:8px; flex-shrink:0;" />
+      <div style="flex:1; min-width:0;">
+        <p style="font-family:'Cinzel',serif; font-size:0.88rem; font-weight:700;
+           color:#C9A84C; letter-spacing:0.05em; margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+          Instalar Santa d'Arc
+        </p>
+        <p style="font-size:0.80rem; opacity:0.80; margin:0; font-family:'Crimson Text',serif;">
+          Acesse offline · Como app nativo
+        </p>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-shrink:0;">
+        <button id="pwa-install-btn"
+                style="background:linear-gradient(135deg,#C9A84C,#F0D98C); color:#1A1208;
+                       border:none; padding:0.5rem 1.1rem; border-radius:4px; cursor:pointer;
+                       font-family:'Cinzel',serif; font-size:0.75rem; font-weight:700;
+                       letter-spacing:0.1em; text-transform:uppercase; white-space:nowrap;">
+          Instalar
+        </button>
+        <button id="pwa-dismiss-btn"
+                style="background:transparent; color:#C9A84C; border:1px solid #C9A84C;
+                       padding:0.5rem 0.6rem; border-radius:4px; cursor:pointer; font-size:0.9rem;">
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ Hint para iOS ══ -->
+    <div id="ios-install-hint" style="display:none; padding:0.55rem 1rem;
+         background:#1A1208; color:#F0D98C; text-align:center; font-size:0.82rem;
+         border-bottom:1px solid rgba(201,168,76,0.3); font-family:'Cinzel',serif;
+         letter-spacing:0.03em;">
+      📱 Para instalar: Safari →
+      <strong style="color:#C9A84C;">Compartilhar</strong> →
+      <strong style="color:#C9A84C;">Adicionar à Tela de Início</strong>
+      <button onclick="document.getElementById('ios-install-hint').style.display='none'; localStorage.setItem('ios-hint-dismissed','1')"
+              style="background:transparent; border:none; color:#F0D98C; cursor:pointer;
+                     margin-left:0.5rem; font-size:1rem; vertical-align:middle;">✕</button>
+    </div>
+
+    <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= render "footer", metadata: site.metadata %>
+  </body>
+</html>

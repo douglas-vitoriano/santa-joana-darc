@@ -1,0 +1,21 @@
+- titulo: "Catecismo da Igreja Católica "
+  categoria: "Doutrina"
+  descricao: "O Catecismo da Igreja Católica (Edição Típica Vaticana), publicado em 1992, é uma exposição da fé católica
+    e da doutrina da Igreja. Trata-se de um documento confessional de referência, oficial e autêntico, para o ensino da 
+    doutrina da Igreja Católica Apostólica Romana,."
+  detalhes: "PDF · 713 páginas"
+  url: "/downloads/catecismo.pdf"
+
+- titulo: "Tratado da devoção à Santíssima Virgem"
+  categoria: "Mariologia"
+  descricao: "O Tratado da verdadeira devoção à Santíssima Virgem é a obra principal de São Luís Maria Grignion de 
+    Montfort, um teólogo, sacerdote missionário e escritor francês, membro da Igreja Católica e canonizado por esta."
+  detalhes: "PDF · 211 páginas"
+  url: "/downloads/tratado_da_verdadeira_devoção.pdf"
+
+- titulo: "Apostila — Maria NÃO é uma qualquer"
+  categoria: "Apostilas"
+  descricao: "<strong>Aplicado no dia 24/03/2026</strong><br/>Fundamentos da doutrina mariana, textos bíblicos e patrísticos."
+  detalhes: "PDF · 84 páginas"
+  url: "/downloads/maria_nao_e_uma_mulher_qualquer.pdf"
+  
